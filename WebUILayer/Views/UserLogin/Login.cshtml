@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-container container">
+
+    @if (ViewBag.message != null)
+    {
+        <div id="show-alert" class="alert alert-danger" role="alert">
+            @ViewBag.message
+        </div>
+    }
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="page-login">
+
+                <div class="account-border">
+                    <div class="row">
+                        <div class="col-sm-6 new-customer">
+                            <div class="well">
+                                <h2><i class="fa fa-file-o" aria-hidden="true"></i> Yeni Kullanıcı</h2>
+                                <p>Hesap oluşturarak daha hızlı alışveriş yapabilecek, siparişin durumu hakkında güncel bilgi sahibi olabilecek ve daha önce vermiş olduğunuz siparişleri takip edebileceksiniz.</p>
+                            </div>
+                            <div class="bottom-form">
+                                <a href="/UserLogin/Register/" class="btn btn-default pull-right">Kayıt Ol</a>
+                            </div>
+                        </div>
+
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <div class="col-sm-6 customer-login">
+                                <div class="well">
+                                    <h2><i class="fa fa-file-text-o" aria-hidden="true"></i> Kullanıcı Giriş Ekranı</h2>
+
+                                    <div class="form-group">
+                                        <label class="control-label " for="input-email">Mail</label>
+                                        <input type="text" name="Email" required="" value="" id="input-email" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label " for="input-password">Şifre</label>
+                                        <input type="password" name="Password" required="" value="" id="input-password" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="bottom-form">
+                                    <a href="/UserLogin/Recovery/" id="forgotps" class="forgot">Şifremi Unuttum</a>
+                                    <input type="submit" value="Giriş Yap" class="btn btn-default pull-right" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div id="container-module-newletter" class="hidden-md hidden-sm hidden-xs">
+    <div class="so_newletter_custom_popup_bg popup_bg"></div>
+    <div class="module main-newsleter-popup so_newletter_custom_popup so_newletter_oca_popup" id="so_newletter_custom_popup">
+        <div class="so-custom-popup so-custom-oca-popup" style="width: 850px; background: url('~/Content/user/image/demo/cms/newletter-bg.jpg') no-repeat white; ">
+            <div class="modcontent">
+                <div class="oca_popup" id="test-popup">
+                    <div class="popup-content">
+                        <p class="newsletter_promo">MARKET</p>
+                        <div class="popup-title">Şifre Sıfırlama Paneli	@ViewBag.message		</div>
+                        <form method="post" action="/UserLogin/Recovery/" name="signup" class="form-group signup">
+                            <div class="input-control"> <div class="email"> <input type="email" placeholder="Mail Adresiniz..." value="" class="form-control" id="txtemail" name="Email"> </div> <button class="btn btn-default" type="submit" onclick="return subscribe_newsletter();" name="submit">Sıfırla</button> </div>
+                        </form>
+                     
+                    </div>
+                </div>
+            </div>--> <!--/.modcontent-->
+            <!--<button title="Close" type="button" class="popup-close">×</button>
+        </div>
+    </div>
+</div>-->
+
+@*<link href="~/Content/user/css/themecss/so-newletter-popup.css" rel="stylesheet">
+
+<script>
+    document.querySelector("#container-module-newletter").setAttribute("style", "display:none");
+</script>*@
+
+
+@*<script>
+    document.querySelector("#forgotps").addEventListener("click", function () {
+        document.querySelector("#container-module-newletter").setAttribute("style", "display:block");
+    }
+        
+)
+</script>*@
+
+<script>
+    var alert = document.querySelector("#show-alert");
+    setTimeout(() => {
+        alert.remove();
+    }, 2000);
+</script>

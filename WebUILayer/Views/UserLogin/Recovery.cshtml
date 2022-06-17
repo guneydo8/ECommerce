@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Recovery";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-container container">
+
+    @if (ViewBag.message != null)
+    {
+        <div id="show-alert" class="alert alert-danger" role="alert">
+            @ViewBag.message
+        </div>
+    }
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="page-login">
+
+                <div class="account-border">
+                    <div class="row">
+                        @*<div class="col-sm-6 new-customer">
+                                <div class="well">
+
+                                </div>
+
+                            </div>*@
+
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <div class="col-sm-12 customer-login">
+                                <div class="well">
+                                    <h2><i class="fa fa-file-o" aria-hidden="true"></i> Şifrenizi mi Unuttunuz ?</h2>
+                                    <p class="text-info">Sisteme kayıt olduğunuz mail adresinizi doğrulayarak şifrenizi sıfırlama işlemini yapabilirsiniz.</p>
+                                    <hr />
+                                   
+
+                                    <div class="form-group">
+                                        <label class="control-label " for="input-email">Mail</label>
+                                        <input type="email" name="Email" required="" value="" placeholder="Mail Adresiniz..." id="input-email" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="bottom-form">
+
+                                    <input type="submit" value="Sıfırla" class="btn btn-default pull-right" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var alert = document.querySelector("#show-alert");
+    setTimeout(() => {
+        alert.remove();
+    }, 2000);
+</script>

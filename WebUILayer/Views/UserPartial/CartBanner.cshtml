@@ -1,0 +1,69 @@
+﻿@model WebUILayer.Models.ChartViewModel
+
+
+  
+            <a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
+                <div class="shopcart">
+                    <span class="handle pull-left"></span>
+                    <span class="title">Sepet</span>
+                    <p class="text-shopping-cart cart-total-full">@Model.CartListItems.Count() Ürün - ₺ @Model.CartListItems.Sum(x=>x.Product.Price) </p>
+                </div>
+            </a>
+
+            <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
+                <li>
+                    <table class="table table-striped">
+                        <tbody>
+                            @foreach (var item in Model.CartListItems)
+                            {
+                                var image = item.Product.ProductImages.FirstOrDefault();
+
+                                <tr>
+                                    <td class="text-center" style="width:70px">
+                                        <a href="/UserProduct/SingleProduct/@item.Product.Id"> <img src="@image.ImageUrl" style="width:70px" alt="@item.Product.Title" title="@item.Product.Title" class="preview"> </a>
+                                    </td>
+                                    <td class="text-left"> <a class="cart_product_name" href="product.html">@item.Product.Title</a> </td>
+                                    <td class="text-center"> x1  </td>
+                                    <td class="text-center">₺@item.Product.Price </td>
+                                   
+                                  
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <div>
+                        <table class="table table-bordered">
+                            <tbody>
+                         
+
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>Kargo Ücreti:</strong>
+                                    </td>
+                                    <td class="text-right">₺ 0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>KDV (20%):</strong>
+                                    </td>
+                                    <td class="text-right">₺ @(Model.CartListItems.Sum(x=>x.Product.Price)/5)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">
+                                        <strong>Sepet Toplamı:</strong>
+                                    </td>
+
+                                    <td class="text-right">₺ @Model.CartListItems.Sum(x => x.Product.Price)</td>
+                                </tr>
+             
+                           
+                            </tbody>
+                        </table>
+                        <p class="text-right"> <a class="btn view-cart" href="/UserCart/Index/"><i class="fa fa-shopping-cart"></i>Sepete Git</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="/UserCheckOut/Index/"><i class="fa fa-share"></i>Sepeti Onayla</a> </p>
+                    </div>
+                </li>
+            </ul>
+    

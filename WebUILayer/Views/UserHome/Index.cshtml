@@ -1,0 +1,263 @@
+﻿@model WebUILayer.Models.ProductListModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<!-- Block slideshow  -->
+<section class="so-slideshow ">
+    <div id="so-slideshow">
+        <div class="module slideshow no-margin">
+            <div class="yt-content-slider yt-content-slider--arrow1" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                <div class="yt-content-slide">
+                    <a href="#"><img src="~/Content/user/image/demo/slider/home6/slider-1.jpg" alt="slider1" class="img-responsive"></a>
+                </div>
+                <div class="yt-content-slide">
+                    <a href="#"><img src="~/Content/user/image/demo/slider/home6/slider-2.jpg" alt="slider2" class="img-responsive"></a>
+                </div>
+                <div class="yt-content-slide">
+                    <a href="#"><img src="~/Content/user/image/demo/slider/home6/slider-3.jpg" alt="slider3" class="img-responsive"></a>
+                </div>
+            </div>
+            <div class="loadeding"></div>
+        </div>
+
+
+    </div>
+    
+</section>
+<!-- //Block slideshow  -->
+<!-- Main Container  -->
+<div class="main-container ">
+    <div class="container">
+        <div class="row">
+            <div id="content-top" class="clearfix">
+
+                <div class="module customhtml ">
+                    <div class="modcontent clearfix">
+                        <div class="services-v1">
+                            <div class="policy policy1 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="policy-inner">
+                                    <span class="ico-policy"></span>
+                                    <h2>30 Günde</h2><a href="#">para iade</a>
+                                </div>
+                            </div>
+                            <div class="policy policy2 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="policy-inner">
+                                    <span class="ico-policy"></span><a href="#"><h2>Ücretsiz Kargo</h2></a>
+                                </div>
+                            </div>
+                            <div class="policy policy3 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="policy-inner">
+                                    <span class="ico-policy"></span><a href="#"><h2>Düşük fiyat</h2>garantisi </a>
+                                </div>
+                            </div>
+                            <div class="policy policy4 col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="policy-inner">
+                                    <span class="ico-policy"></span><a href="#"><h2>Güvenli alışveriş</h2>garantisi </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="content" class="clearfix">
+                <div class="col-xs-12 clearfix">
+                    <div class="module tab-slider titleLine">
+
+                        <div id="so_listing_tabs_1" class="so-listing-tabs first-load module">
+                            <div class="loadeding"></div>
+                            <div class="ltabs-wrap ">
+                                <div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="1" data-md="1" data-sm="1" data-xs="1" data-margin="0">
+                                    <!--Begin Tabs-->
+                                    <div class="ltabs-tabs-wrap tabs-wrap__Line">
+                                        <span class="ltabs-tab-selected">Jewelry &amp; Watches	</span> <span class="ltabs-tab-arrow">▼</span>
+                                        <div class="item-sub-cat  item-sub-cat__divided">
+                                            <ul class="ltabs-tabs cf">
+                                                <li class="ltabs-tab tab-sel" data-category-id="" data-active-content=".items-category-"> <span class="ltabs-tab-label">Tüm Kategoriler						</span> </li>
+                                                @foreach (var item in Model.ProductCategories)
+                                                {
+
+
+                                                    <li class="ltabs-tab tab-sel" data-category-id="@item.Id" data-active-content=".items-category-@item.Id"> <span class="ltabs-tab-label">@item.Title						</span> </li>
+                                                }
+                                             
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- End Tabs-->
+                                </div>
+                                <div class="ltabs-items-container">
+                                    <!--Begin Items-->
+                                    <div class="ltabs-items  ltabs-items-selected items-category-62 products-list grid" data-total="10">
+                                        <div class="ltabs-items-inner ltabs-slider ">
+                                            
+                                            <div class="item-wrap">
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <div class="right-container">
+                                                            <div class="row">
+                                                                @foreach (var item in Model.Products)
+                                                                {
+                                                                    var image = item.Images.FirstOrDefault();
+                                                                    var image2 = item.Images.OrderByDescending(x => x.Id).FirstOrDefault();
+
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                    <div class="ltabs-item product-layout ">
+                                                                        <div class="product-item-container">
+                                                                            <div class="left-block">
+                                                                                <div class="product-image-container second_img ">
+                                                                                    <img src="@image.ImageUrl" alt="@item.Product.Title;" class="img-responsive" />
+                                                                                    <img src="@image2.ImageUrl" alt="@item.Product.Title;" class="img_0 img-responsive" />
+                                                                                </div>
+                                                                                <!--Sale Label-->
+                                                                                
+                                                                                <!--full quick view block-->
+                                                                                <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" href="quickview.html">  Hızlı İncele</a>
+                                                                                <!--end full quick view block-->
+                                                                            </div>
+                                                                            <div class="right-block">
+                                                                                <div class="caption">
+                                                                                    <h4><a href="/UserProduct/SingleProduct/@item.Product.Id"><span class="text-danger">@item.Product.ProductBrand.Title</span>-@item.Product.Title</a></h4>
+                                                                                    
+
+                                                                                    <div class="price">
+                                                                                        <span class="price-new">₺@item.Product.Price</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="button-group">
+                                                                                    @if (ViewBag.loginuser != null)
+                                                                                    {
+                                                                                        <a href="/UserCart/AddCart/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i> </a>
+                                                                                        <a href="/UserWhistlist/AddWhistlist/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ekle"><i class="fa fa-heart"></i></a>
+                                                                                        <a href="/UserCompare/AddCompare/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Karşılaştır" ><i class="fa fa-exchange"></i></a>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title= " Sepete Ürün Eklemek İçin Giriş Yapmalısınız" ><i class="fa fa-shopping-cart"></i></a>
+                                                                                        <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ürün Eklemek İçin Giriş Yapmalısınız"><i class="fa fa-heart"></i></a>
+                                                                                        <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Ürün Karşılaştırabilmek İçin Giriş Yapmalısınız" ><i class="fa fa-exchange"></i></a>
+                                                                                    }
+
+
+
+                                                                                </div>
+                                                                            </div><!-- right block -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="ltabs-items  items-category-62  products-list grid" data-total="11">
+                                        <div class="ltabs-loading"></div>
+                                    </div>
+                                    <div class="ltabs-items items-category-63  products-list grid" data-total="11">
+                                        <div class="ltabs-loading"></div>
+                                    </div>
+
+                                </div>
+                                <!--End Items-->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="module ">
+                        <div class="modcontent clearfix">
+                            <div class="yt-content-slider slider-brand--home6" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="35" data-items_column0="6" data-items_column1="4" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
+                                @foreach (var item in Model.Brands)
+                                {
+
+
+                                <div class="yt-content-slide">
+                                    <a title="Brand" href="/UserProduct/Brands/@item.Id"><img src="@item.ImageUrl" alt="@item.Title"></a>
+                                </div>
+
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="module titleLine module--4x">
+    <h3 class="modtitle">Son Çıkan Ürünler</h3>
+    <div class="modcontent clearfix">
+        <div class="so-basic-products products-list product-style__thumb1 grid row">
+            <!--Begin Items-->
+
+            @foreach (var item in Model.LatestProduct)
+            {
+                var image = item.Images.FirstOrDefault();
+
+            <div class="ltabs-item product-layout col-md-4 col-sm-6 col-xs-12">
+                <div class="product-item-container">
+                    <div class="left-block">
+                        <a href="#" class="product-image-container" title="@item.Product.Title">
+                            <img src="@image.ImageUrl" alt="@item.Product.Title;" class="img-responsive">
+                        </a>
+
+                    </div>
+                    <div class="right-block">
+                        <div class="caption">
+                            <h4><a href="/UserProduct/SingleProduct/@item.Product.Id"> <span class="text-danger">@item.Product.ProductBrand.Title</span><br /> @item.Product.Title</a></h4>
+                            
+
+                            <div class="price">
+                                <span class="price-new">₺@item.Product.Price</span>
+                               
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            @if (ViewBag.loginuser != null)
+                            {
+                                <a href="/UserCart/AddCart/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i> </a>
+                                <a href="/UserWhistlist/AddWhistlist/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ekle"><i class="fa fa-heart"></i></a>
+                                <a href="/UserCompare/AddCompare/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Karşılaştır"><i class="fa fa-exchange"></i></a>
+                            }
+                            else
+                            {
+                                <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title=" Sepete Ürün Eklemek İçin Giriş Yapmalısınız"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ürün Eklemek İçin Giriş Yapmalısınız"><i class="fa fa-heart"></i></a>
+                                <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Ürün Karşılaştırabilmek İçin Giriş Yapmalısınız"><i class="fa fa-exchange"></i></a>
+                            }
+
+
+                        </div>
+                    </div><!-- right block -->
+                </div>
+            </div>
+            <!--//End Items-->
+
+            }
+        </div>
+    </div>
+</div>

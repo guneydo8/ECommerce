@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Market | Yönetim Giriş Paneli</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/user/ico/favicon.png" />
+
+    <link rel="stylesheet" href="~/Content/html/assets/css/backend.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/%40fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/%40icon/dripicons/dripicons.css">
+
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/core/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/daygrid/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/timegrid/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/list/main.css' />
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/mapbox/mapbox-gl.css">
+</head>
+<body class=" ">
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <section class="login-content">
+            <img src="~/Content/html/assets/images/login/02.png" class="lb-img" alt="">
+            <img src="~/Content/html/assets/images/login/03.png" class="rb-img" alt="">
+            <div class="container h-100">
+                <div class="row align-items-center justify-content-center h-100">
+                    <div class="col-12">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
+                                <img src="~/Content/html/assets/images/login/01.png" class="img-fluid w-80" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <h2 class="mb-2">Giriş Yap</h2>
+                                <p>Yönetim Giriş Paneli.</p>
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="floating-label form-group">
+                                                <input class="floating-input form-control" type="email" name="Email" placeholder=" ">
+                                                <label>Mail</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="floating-label form-group">
+                                                <input class="floating-input form-control" type="password" name="Password" placeholder=" ">
+                                                <label>Şifre</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <a href="/AdminLogin/Recovery/" class="text-primary float-right">Şifremi Unuttum?</a>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    @if (ViewBag.message != null)
+    {
+        <div class="swal2-container swal2-center swal2-backdrop-show" id="show-alert" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content" class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <ul class="swal2-progress-steps" style="display: none;"></ul><div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+                        <span class="swal2-x-mark">
+                            <span class="swal2-x-mark-line-left"></span>
+                            <span class="swal2-x-mark-line-right"></span>
+                        </span>
+                    </div><div class="swal2-icon swal2-question" style="display: none;"></div><div class="swal2-icon swal2-warning" style="display: none;"></div><div class="swal2-icon swal2-info" style="display: none;"></div><div class="swal2-icon swal2-success" style="display: none;"></div><img class="swal2-image" style="display: none;"><h2 class="swal2-title" id="swal2-title" style="display: flex;">OOps!!</h2><button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div><div class="swal2-content"><div id="swal2-content" class="swal2-html-container" style="display: block;">@ViewBag.message</div><input class="swal2-input" style="display: none;"><input type="file" class="swal2-file" style="display: none;"><div class="swal2-range" style="display: none;"><input type="range"><output></output></div><select class="swal2-select" style="display: none;"></select><div class="swal2-radio" style="display: none;"></div><label for="swal2-checkbox" class="swal2-checkbox" style="display: none;"><input type="checkbox"><span class="swal2-label"></span></label><textarea class="swal2-textarea" style="display: none;"></textarea><div class="swal2-validation-message" id="swal2-validation-message"></div></div><div class="swal2-actions" style="display: none;"><div class="swal2-loader"></div><button type="button" class="swal2-confirm swal2-styled" aria-label="" style="display: none;">OK</button><button type="button" class="swal2-deny swal2-styled" aria-label="" style="display: none;">No</button><button type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: none;">Cancel</button></div><div class="swal2-footer" style="display: none;"></div><div class="swal2-timer-progress-bar-container"><div class="swal2-timer-progress-bar" style="display: none;"></div></div>
+            </div>
+        </div>
+    }
+
+    <script>
+        var alert = document.querySelector("#show-alert");
+        setTimeout(() => {
+            alert.remove();
+        }, 2000);
+    </script>
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="~/Content/html/assets/js/backend-bundle.min.js"></script>
+
+    <!-- Flextree Javascript-->
+    <script src="~/Content/html/assets/js/flex-tree.min.js"></script>
+    <script src="~/Content/html/assets/js/tree.js"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="~/Content/html/assets/js/table-treeview.js"></script>
+
+    <!-- Masonary Gallery Javascript -->
+    <script src="~/Content/html/assets/js/masonry.pkgd.min.js"></script>
+    <script src="~/Content/html/assets/js/imagesloaded.pkgd.min.js"></script>
+
+    <!-- Mapbox Javascript -->
+    <script src="~/Content/html/assets/js/mapbox-gl.js"></script>
+    <script src="~/Content/html/assets/js/mapbox.js"></script>
+
+    <!-- Fullcalender Javascript -->
+    <script src='~/Content/html/assets/vendor/fullcalendar/core/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/daygrid/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/timegrid/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/list/main.js'></script>
+
+    <!-- SweetAlert JavaScript -->
+    <script src="~/Content/html/assets/js/sweetalert.js"></script>
+
+    <!-- Vectoe Map JavaScript -->
+    <script src="~/Content/html/assets/js/vector-map-custom.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/Content/html/assets/js/customizer.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/Content/html/assets/js/chart-custom.js"></script>
+
+    <!-- slider JavaScript -->
+    <script src="~/Content/html/assets/js/slider.js"></script>
+
+    <!-- app JavaScript -->
+    <script src="~/Content/html/assets/js/app.js"></script>
+</body>
+
+<!-- Mirrored from templates.iqonic.design/prox/html/backend/auth-sign-up.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Feb 2022 20:17:38 GMT -->
+</html>

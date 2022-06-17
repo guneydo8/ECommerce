@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Entity
+@model List<ProductCategory>
+<div class="container-megamenu vertical">
+    <div id="menuHeading">
+        <div class="megamenuToogle-wrapper">
+            <div class="megamenuToogle-pattern">
+                <div class="container">
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    Tüm Kategoriler
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-header">
+        <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle fa fa-list-alt">
+        </button>
+        Tüm Kategoriler
+    </div>
+    <div class="vertical-wrapper" style="display: none;">
+        <span id="remove-verticalmenu" class="fa fa-times"></span>
+        <div class="megamenu-pattern">
+            <div class="container">
+                <ul class="megamenu">
+                  
+                    @foreach (var item in Model)
+                    {
+
+
+                    <li class="item-vertical">
+                        <p class="close-menu"></p>
+
+                        <a href="/UserProduct/Category/@item.Id" class="clearfix">
+                            <img style="width:22px;height:12px" src="@item.ImageUrl" alt="icon">
+                            <span>@item.Title</span>
+
+                        </a>
+                    </li>
+                    }
+                    <li class="loadmore">
+                        <i class="fa fa-plus-square-o"></i>
+                        <span class="more-view">Daha Fazla</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

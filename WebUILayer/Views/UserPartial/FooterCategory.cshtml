@@ -1,0 +1,16 @@
+﻿@using EntityLayer.Entity
+@model List<ProductCategory>
+
+<div class="module clearfix">
+    <h3 class="modtitle">Öne Çıkan Kategoriler</h3>
+    <div class="modcontent">
+        <ul class="menu">
+            @foreach (var item in Model.Take(5))
+            {
+
+
+            <li><a href="/UserProduct/Category/@item.Id">@item.Title</a></li>
+            }
+        </ul>
+    </div>
+</div>

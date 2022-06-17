@@ -1,0 +1,17 @@
+﻿@model EntityLayer.Entity.ContactInformation
+
+
+<div class="module clearfix">
+    <h3 class="modtitle">Bizimle İletişime Geçin</h3>
+    <div class="modcontent">
+        <ul class="contact-address">
+
+            
+            <li><span class="fa fa-map-marker"></span> @Model.Adress <br />@Model.City-@Model.Country</li>
+            <li><span class="fa fa-envelope-o"></span> Mail: <a href="mailto:@Model.Email">@Model.Email</a></li>
+            <li><span class="fa fa-phone"></span> Telefon: <a href="tel:@Model.Phone"> @Model.Phone</a></li>
+
+
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,291 @@
+﻿@model WebUILayer.Models.ProductListModel
+@{
+    ViewBag.Title = "Brands";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<div class="main-container container">
+
+
+    <div class="row">
+
+        <!--Middle Part Start-->
+        <div id="content" class="col-md-9 col-sm-8">
+            <div class="products-category">
+
+                <!--- Subcategories - -->
+                <!---//Subcategories - -->
+                <!-- Filters -->
+                <div class="product-filter filters-panel">
+                    <div class="row">
+                        <div class="col-md-2 visible-lg">
+                            <div class="view-mode">
+                                <div class="list-view">
+                                    <button class="btn btn-default grid " data-view="grid" data-toggle="tooltip" data-original-title="Tablo"><i class="fa fa-th"></i></button>
+                                    <button class="btn btn-default list active" data-view="list" data-toggle="tooltip" data-original-title="Liste"><i class="fa fa-th-list"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <!-- //end Filters -->
+                <!--changed listings-->
+                <div class="products-list row list">
+                    @foreach (var item in Model.Products)
+                    {
+                        var image = item.Images.FirstOrDefault();
+                        var image2 = item.Images.OrderByDescending(x => x.Id).FirstOrDefault();
+                        <div class="product-layout col-md-4 col-sm-6 col-xs-12 category-@item.Product.ProductCategoryId brand-@item.Product.ProductBrandId">
+                            <div class="product-item-container">
+
+
+                                <div class="left-block">
+
+                                    <div class="product-image-container lazy second_img ">
+
+
+
+                                        <img data-src="@image.ImageUrl" src="@image.ImageUrl" alt="Apple Cinema 30&quot;" class="img-responsive" />
+                                        <img data-src="@image2.ImageUrl" src="@image2.ImageUrl" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+
+                                    </div>
+                                    <!--Sale Label-->
+                                    <!--full quick view block-->
+                                    <a class="quickview iframe-link visible-lg" data-fancybox-type="iframe" href="quickview.html">  Hızlı İncele</a>
+                                    <!--end full quick view block-->
+                                </div>
+
+
+                                <div class="right-block">
+                                    <div class="caption">
+
+
+                                        <h4><a href="/UserProduct/SingleProduct/@item.Product.Id"><span class="text-danger">@item.Product.ProductBrand.Title</span> - @item.Product.Title&quot;</a></h4>
+                                        
+
+                                        <div class="price">
+                                            <span class="price-new">₺ @item.Product.Price</span>
+
+
+                                        </div>
+                                        <div class="description item-desc hidden">
+                                            <p>@item.Product.Description. </p>
+                                        </div>
+
+                                    </div>
+                                   
+                                    <div class="button-group">
+                                        @if (ViewBag.loginuser != null)
+                                        {
+                                            <a href="/UserCart/AddCart/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Sepete Ekle"><i class="fa fa-shopping-cart"></i> </a>
+                                            <a href="/UserWhistlist/AddWhistlist/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ekle"><i class="fa fa-heart"></i></a>
+                                            <a href="/UserCompare/AddCompare/@item.Product.Id" class="addToCart" type="button" data-toggle="tooltip" title="Karşılaştır"><i class="fa fa-exchange"></i></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title=" Sepete Ürün Eklemek İçin Giriş Yapmalısınız"><i class="fa fa-shopping-cart"></i></a>
+                                            <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Favorilere Ürün Eklemek İçin Giriş Yapmalısınız"><i class="fa fa-heart"></i></a>
+                                            <a href="/UserLogin/Login/" class="addToCart" type="button" data-toggle="tooltip" title="Ürün Karşılaştırabilmek İçin Giriş Yapmalısınız"><i class="fa fa-exchange"></i></a>
+                                        }
+                                    </div>
+
+                                  
+
+                                </div><!-- right block -->
+
+                            </div>
+                        </div>
+                    }
+
+                </div>					<!--// End Changed listings-->
+                <!-- Filters -->
+                
+                <!-- //end Filters -->
+
+            </div>
+
+        </div>
+        <!--Right Part Start -->
+        <aside class="col-sm-4 col-md-3" id="column-left">
+
+            <div class="module latest-product titleLine">
+                <h3 class="modtitle">Filtrele </h3>
+                <div class="modcontent ">
+                    <form class="type_2">
+
+                        <div class="table_layout filter-shopby">
+                            <div class="table_row">
+                                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+                                <div class="table_cell" style="z-index: 103;">
+                                    <legend>Ara</legend>
+                                    <input class="form-control" type="text" value="" size="50" autocomplete="off" placeholder="Ara" name="search">
+                                </div><!--/ .table_cell -->
+                                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+                                <!-- - - - - - - - - - - - - - SUB CATEGORY - - - - - - - - - - - - - - - - -->
+                                <div class="table_cell">
+                                    <fieldset>
+                                        <legend>Kategoriler</legend>
+                                        <ul class="checkboxes_list">
+                                            @foreach (var item in Model.ProductCategories)
+                                            {
+
+
+                                                <li>
+                                                    <input type="checkbox" onchange="ChangeProduct('@item.Id',this)" name="category" id="category_@item.Id">
+                                                    <label for="category_@item.Id">@item.Title</label>
+                                                </li>
+                                            }
+
+                                        </ul>
+
+                                    </fieldset>
+
+                                </div><!--/ .table_cell -->
+                                <!-- - - - - - - - - - - - - - End SUB CATEGORY - - - - - - - - - - - - - - - - -->
+                                <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+                                <div class="table_cell">
+                                    <fieldset>
+                                        <legend>Markalar</legend>
+                                        <ul class="checkboxes_list">
+                                            @foreach (var item in Model.Brands)
+                                            {
+
+
+                                                <li>
+                                                    <input type="checkbox" onchange="ChangeBrand('@item.Id',this)" name="brand" id="brand_@item.Id">
+                                                    <label for="brand_@item.Id">@item.Title</label>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+
+                                    </fieldset>
+
+                                </div><!--/ .table_cell -->
+                               
+
+                            </div><!--/ .table_row -->
+                            <footer class="bottom_box">
+                                <div class="buttons_row">
+                                   
+                                    <button type="submit" class="button_grey filter_reset  button_submit">Sıfırla</button>
+                                </div>
+                            </footer>
+                        </div><!--/ .table_layout -->
+
+
+
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="module latest-product titleLine">
+                <h3 class="modtitle">Son Eklenenler</h3>
+                <div class="modcontent ">
+                    @foreach (var item in Model.LatestProduct)
+                    {
+                        var image = item.Images.FirstOrDefault();
+
+                        <div class="product-latest-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="/UserProduct/SingleProduct/@item.Product.Id"><img src="@image.ImageUrl" alt="@item.Product.Title" title="@item.Product.Title" class="img-responsive" style="width: 100px; height: 82px;"></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="caption">
+                                        <h4><a href="/UserProduct/SingleProduct/@item.Product.Id">@item.Product.Title</a></h4>
+
+                                        <div class="price">
+                                            <span class="price-new">₺@item.Product.Price</span>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+
+        </aside>
+        <!--Right Part End -->
+
+
+    </div>
+    <!--Middle Part End-->
+</div>
+
+
+
+<script type="text/javascript">
+    var selectedCategories = [];
+    var selectedBrands = [];
+    $(document).ready(function () {
+        if ($.cookie('display')) {
+            view = $.cookie('display');
+        } else {
+            view = 'grid';
+        }
+        if (view) display(view);
+    });
+
+
+    function ChangeProduct(categoryId, el) {
+
+        if (el.checked) {
+            selectedCategories.push(categoryId);
+
+        }
+        else {
+            selectedCategories = selectedCategories.filter(function (item) {
+                return item !== categoryId
+            })
+        }
+        ShowProducts();
+
+    }
+    function ShowProducts() {
+        $('.product-layout').hide();
+        selectedCategories.forEach(element => {
+            $('.category-' + element).show();
+        });
+    }
+
+
+
+    //function ChangeProduct(brnadId, el) {
+
+    //    if (el.checked) {
+    //        selectedBrands.push(brandId);
+
+    //    }
+    //    else {
+    //        selectedBrands = selectedBrands.filter(function (item) {
+    //            return item !== brandId
+    //        })
+    //    }
+    //    ShowProducts();
+
+    //}
+    //function ShowProducts() {
+    //    $('.product-layout').hide();
+    //    selectedBrands.forEach(element => {
+    //        $('.brand-' + element).show();
+    //    });
+    //}
+
+</script>
+
+
+
+

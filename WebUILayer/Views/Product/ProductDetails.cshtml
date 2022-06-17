@@ -1,0 +1,140 @@
+﻿@model EntityLayer.Entity.Product
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<link rel="shortcut icon" href="~/Content/user/ico/favicon.png">
+
+<!-- Google web fonts
+============================================ -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+<!-- Libs CSS
+============================================ -->
+
+<link rel="stylesheet" href="~/Content/user/css/bootstrap/css/bootstrap.min.css">
+<link href="~/Content/user/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Content/user/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="~/Content/user/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="~/Content/user/css/themecss/lib.css" rel="stylesheet">
+<link href="~/Content/user/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+<!-- Theme CSS
+============================================ -->
+<link href="~/Content/user/css/themecss/so_megamenu.css" rel="stylesheet">
+<link href="~/Content/user/css/themecss/so-categories.css" rel="stylesheet">
+<link href="~/Content/user/css/themecss/so-listing-tabs.css" rel="stylesheet">
+<link href="~/Content/user/css/header6.css" rel="stylesheet">
+<link href="~/Content/user/css/footer3.css" rel="stylesheet">
+<link id="color_scheme" href="~/Content/user/css/home6.css" rel="stylesheet">
+
+<link href="~/Content/user/css/responsive.css" rel="stylesheet">
+
+
+
+<div class="row">
+    <!--Middle Part Start-->
+    <div id="content" class="col-md-12 col-sm-12">
+
+        <div class="product-view row">
+            <div class="left-content-product col-lg-10 col-xs-12">
+                <div class="row">
+                    <div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
+                        <div class="large-image  ">
+                            <img itemprop="image" class="product-image-zoom" src="image/demo/shop/product/J9.jpg" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
+                        </div>
+                        @foreach (var item in ViewBag.image)
+                        {
+                            <div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
+                                @*<a data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" title="Bint Beef">
+                                    <img src="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef">
+                                </a>*@
+
+
+
+                                <a data-index="1" class="img thumbnail " data-image="image/demo/shop/product/J6.jpg" title="Bint Beef">
+                                    <img src="@item" title="Bint Beef" alt="Bint Beef">
+                                </a>
+
+                                
+                            </div>
+                        }
+                        </div>
+
+                    <div class="content-product-right col-sm-6 col-xs-12">
+                        <div class="title-product">
+                            <h1>@Model.Title</h1>
+                        </div>
+                        <!-- Review ---->
+                        <div class="box-review form-group">
+                            <div class="ratings">
+                                <div class="rating-box">
+                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                </div>
+                            </div>
+
+                            <a class="reviews_button" href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a>	|
+                            <a class="write_review_button" href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
+                        </div>
+
+                        <div class="product-label form-group">
+                            <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+                                <span class="price-new" itemprop="price">₺@Model.Price</span>
+
+                            </div>
+                            <div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
+                        </div>
+
+                        <div class="product-box-desc">
+                            <div class="inner-box-desc">
+                                <div class="price-tax"><span>Ex Tax:</span> $60.00</div>
+                                <div class="reward"><span>Price in reward points:</span> 400</div>
+                                <div class="brand"><span>Brand:</span><a href="#">Apple</a>		</div>
+                                <div class="model"><span>Product Code:</span> Product 15</div>
+                                <div class="reward"><span>Reward Points:</span> 100</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- end box info product -->
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+<script type="text/javascript" src="~/Content/user/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="~/Content/user/js/themejs/libs.js"></script>
+<script type="text/javascript" src="~/Content/user/js/unveil/jquery.unveil.js"></script>
+<script type="text/javascript" src="~/Content/user/js/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/datetimepicker/moment.js"></script>
+<script type="text/javascript" src="~/Content/user/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/Content/user/js/modernizr/modernizr-2.6.2.min.js"></script>
+
+
+<!-- Theme files
+============================================ -->
+<script type="text/javascript" src="~/Content/user/js/themejs/application.js"></script>
+<script type="text/javascript" src="~/Content/user/js/themejs/homepage.js"></script>
+<script type="text/javascript" src="~/Content/user/js/themejs/so_megamenu.js"></script>
+<script type="text/javascript" src="~/Content/user/js/themejs/addtocart.js"></script>

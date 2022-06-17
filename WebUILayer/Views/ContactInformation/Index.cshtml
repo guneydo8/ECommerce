@@ -1,0 +1,82 @@
+﻿@using EntityLayer.Entity
+@model List<ContactInformation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">@ViewBag.message</h4>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table id="datatable" class="table data-table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ülke</th>
+                        <th>Şehir</th>
+                        <th>Adres</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Eklenme Tarihi</th>
+                        <th>Güncellenme Tarihi</th>
+
+
+
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+
+
+                            <td>@item.Country</td>
+                            <td>@item.City</td>
+                            <td>@item.Adress</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                           
+                            <td>@item.CreatedTime.ToString("f")</td>
+                            <td>@item.UpdatedTime.ToString("f")</td>
+
+
+
+                            <td>
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle1" id="dropdownMenuButton8" data-toggle="dropdown">
+                                        <i class="ri-more-2-fill"></i>
+                                    </span>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton8" style="">
+                                        <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View</a>
+                                        <a class="dropdown-item" href="/ContactInformation/Delete/@item.Id" onclick="return confirm('Silmek istediğinize emin misiniz?')"><i class="ri-delete-bin-6-fill mr-2"></i>Sil</a>
+                                        <a class="dropdown-item" href="/ContactInformation/Update/@item.Id"><i class="ri-pencil-fill mr-2"></i>Güncelle</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-printer-fill mr-2"></i>Print</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-file-download-fill mr-2"></i>Download</a>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<a href="/ContactInformation/Add/" class="btn btn-outline-dark rounded-pill mt-2"><i class="ri-add-line"></i>İletişim Bilgisi Ekle</a>
+

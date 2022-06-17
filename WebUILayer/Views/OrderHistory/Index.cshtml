@@ -1,0 +1,56 @@
+﻿@model WebUILayer.Models.OrderHistoryViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="main-container container">
+
+
+    <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Sipariş Geçmişim</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td class="text-center">Ürün Görsel</td>
+                            <td class="text-left">Ürün Adı</td>
+                            <td class="text-left">Ürün Kodu</td>
+                            <td class="text-left">Marka</td>
+                            <td class="text-left">Adet</td>
+                            <td class="text-right">Birim Fiyat</td>
+                            <td class="text-right">Toplam Fiyat</td>
+                            <td class="text-right">Tarih</td>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderHistoryItems)
+                        {
+
+                            var image = item.ProductImages.FirstOrDefault();
+
+                         
+                            <tr>
+                                <td class="text-center"><a href="product.html"><img width="70" src="@image.ImageUrl" alt="@item.Product.Title" /></a></td>
+                                <td class="text-left">@item.Product.Title</td>
+                                <td class="text-left">@item.Product.ProductCode</td>
+                                <td class="text-left">@item.Product.ProductBrand.Title</td>
+                                <td class="text-left">@item.Sale.Quantity</td>
+                                <td  class="text-right">@item.Product.Price</td>
+                                <td  class="text-right">₺ @item.Product.Price </td>
+                                <td  class="text-right">@item.Sale.CreatedTime.ToString("f") </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+     
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+﻿@using EntityLayer.Entity
+@model List<ProductBrand>
+<div class="module clearfix">
+    <h3 class="modtitle">Öne Çıkan Markalar</h3>
+    <div class="modcontent">
+        <ul class="menu">
+            @foreach (var item in Model.Take(5))
+            {
+
+        
+            <li><a href="/UserProduct/Brands/@item.Id">@item.Title</a></li>
+            }
+        </ul>
+    </div>
+</div>

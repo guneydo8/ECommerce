@@ -1,0 +1,64 @@
+﻿@model WebUILayer.Models.WhistlistViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">@ViewBag.message</h4>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table id="datatable" class="table data-table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ürün Görsel</th>
+                        <th>Ürün Kodu</th>
+                        <th>Ürün Adı</th>
+                        <th>Müşteri</th>
+
+                        <th>Marka</th>
+                        <th>Kategori</th>
+                        <th>Eklenme Tarihi</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.WhistlistItems)
+                    {
+                        var image = item.ProductImages.FirstOrDefault();
+                        <tr>
+
+                            <td><img src="@image.ImageUrl" alt="@item.Product.Title" class="img-fluid rounded avatar-40 text-center"></td>
+                            <td>#@item.Product.ProductCode</td>
+                            <td>@item.Product.Title</td>
+
+                            <td>@item.Whistlist.EndUser.Name  @item.Whistlist.EndUser.Surname</td>
+                            <td>@item.Product.ProductBrand.Title</td>
+                            <td>@item.Product.ProductCategory.Title</td>
+
+
+                            <td>@item.Whistlist.CreatedTime.ToString("f")</td>
+
+
+
+
+
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

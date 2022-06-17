@@ -1,0 +1,35 @@
+﻿
+
+
+    <div id="search0" class="search input-group">
+       
+        <input id="search-text" class="autosearch-input form-control" type="text" value=""  size="50" autocomplete="off" placeholder="Aradığınız ürün,kategori veya markayı yaznız..." name="search">
+        <span class="input-group-btn">
+            <button type="button" id="search-btn" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+        </span>
+    </div>
+    <input type="hidden" name="route" value="product/search">
+
+<div style="background-color:white;border-radius:15px;" id="div-results">
+    </div>
+    <script type="text/javascript">
+        $("#search-btn").click(function (e) {
+            //do your own request an handle the results
+            console.log('button clicked')
+            $.ajax({
+                url: '/UserPartial/SearchAll/',
+                type: 'get',
+
+                data: { search: $('#search-text').val() },
+                success: function (data) {
+                    console.log("response")
+                    $('#div-results').html(data);
+                },
+                error: function (xhr, status, error) {
+                  
+
+                },
+            });
+
+        });
+    </script>

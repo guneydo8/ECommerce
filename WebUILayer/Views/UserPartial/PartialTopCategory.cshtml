@@ -1,0 +1,57 @@
+﻿@using EntityLayer.Entity
+@model List<ProductCategory>
+
+<li class="with-sub-menu hover">
+    <p class="close-menu"></p>
+    <a href="#" class="clearfix">
+        <strong>Kateogriler</strong>
+        <span class="label"></span>
+        <b class="caret"></b>
+    </a>
+    <div class="sub-menu" style="width: 100%; display: none;">
+        
+
+
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        @foreach (var item in ViewBag.category)
+                        {
+                            <div class="col-md-3 img img1">
+                                <a href="#"><img src="@item" style="width:270px;height:168px" alt="banner1"></a>
+                            </div>
+                            
+                        }
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Take(4))
+                {
+
+                    <div class="col-md-3">
+
+
+                        <a href="/UserProduct/Category/@item.Id" class="title-submenu">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @item.Title</a>
+                       
+                        @*<div class="row">
+                            <div class="col-md-12 hover-menu">
+                                <div class="menu">
+                                    <ul>
+                                        <li><a href="#" class="main-menu">Car Alarms and Security</a></li>
+                                        <li><a href="#" class="main-menu">Car Audio &amp; Speakers</a></li>
+                                        <li><a href="#" class="main-menu">Gadgets &amp; Auto Parts</a></li>
+                                        <li><a href="#" class="main-menu">More Car Accessories</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    </div>
+                }
+                </div>
+        </div>
+        
+    </div>
+</li>

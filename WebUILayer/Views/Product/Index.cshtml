@@ -1,0 +1,82 @@
+﻿@using EntityLayer.Entity
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">@ViewBag.message</h4>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table id="datatable" class="table data-table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ürün Kodu</th>
+                        <th>Ürün Adı</th>
+                       
+                        <th>Fiyat</th>
+                        <th>Stok</th>
+                        <th>Marka</th>
+                        <th>Kategori</th>
+                        <th>Eklenme Tarihi</th>
+                        <th>Güncellenme Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+
+
+                            <td>#@item.ProductCode</td>
+                            <td>@item.Title</td>
+                            
+                            <td>@item.Price</td>
+                            <td>@item.Stock</td>
+                            <td>@item.ProductBrand.Title</td>
+                            <td>@item.ProductCategory.Title</td>
+                            @*<td><img src="@item.ImageUrl" alt="No Image" class="img-fluid rounded avatar-40 text-center"></td>*@
+                            <td>@item.CreatedTime.ToString("f")</td>
+                            <td>@item.UpdatedTime.ToString("f")</td>
+
+
+
+                            <td>
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle1" id="dropdownMenuButton8" data-toggle="dropdown">
+                                        <i class="ri-more-2-fill"></i>
+                                    </span>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton8" style="">
+                                        <a class="dropdown-item" href="/Product/ProductDetails/@item.Id"><i class="ri-eye-fill mr-2"></i>Ürünü İncele</a>
+                                        <a class="dropdown-item" href="/Product/Delete/@item.Id" onclick="return confirm('Silmek istediğinize emin misiniz?')"><i class="ri-delete-bin-6-fill mr-2"></i>Sil</a>
+                                        <a class="dropdown-item" href="/Product/Update/@item.Id"><i class="ri-pencil-fill mr-2"></i>Güncelle</a>
+                                        
+                                    </div>
+                                </div>
+
+                            </td>
+                                                                                                                            
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<a href="/Product/Add/" class="btn btn-outline-dark rounded-pill mt-2"><i class="ri-add-line"></i>Ürün Ekle</a>

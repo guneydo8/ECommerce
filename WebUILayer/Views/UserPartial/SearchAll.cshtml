@@ -1,0 +1,29 @@
+﻿
+@model  WebUILayer.Models.SearchViewModel
+
+<table class="table ">
+    @foreach (var item in Model.ProductItemModels)
+    {
+        var image = item.Images.FirstOrDefault();
+    <tr>
+        <td><a class="btn-link" href="/UserProduct/SingleProduct/@item.Product.Id">@item.Product.Title</a></td>
+        <td><img src="@image.ImageUrl" style="width:35px;height:35px" alt="@item.Product.Title" title="@item.Product.Title" class="preview"></td>
+    </tr>
+    }
+    @foreach (var item in Model.ProductBrands)
+    {
+        <tr>
+            <td><a class="btn-link" href="/UserProduct/Brands/@item.Id">@item.Title</a></td>
+            <td><img src="@item.ImageUrl" style="width:35px;height:35px" alt="@item.Title" title="@item.Title" class="preview"></td>
+        </tr>
+    }
+    @foreach (var item in Model.ProductCategories)
+    {
+<tr>
+    <td><a class="btn-link" href="/UserProduct/Category/@item.Id">@item.Title</a></td>
+    <td><img src="@item.ImageUrl" style="width:35px;height:35px" alt="@item.Title" title="@item.Title" class="preview"></td>
+</tr>
+    }
+
+</table>
+

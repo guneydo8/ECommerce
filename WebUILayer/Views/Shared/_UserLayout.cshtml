@@ -1,0 +1,440 @@
+﻿@{ var loginuser = Session["userlogin"] as EntityLayer.Entity.EndUser; }
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from demo.smartaddons.com/templates/html/market/home6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 May 2022 21:36:37 GMT -->
+<head>
+
+    <!-- Basic page needs
+    ============================================ -->
+    <title>Market - Güvenilir Alışverişin Adresi</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+    <link rel="shortcut icon" href="~/Content/user/ico/favicon.png">
+
+    <!-- Google web fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Libs CSS
+    ============================================ -->
+
+    <link rel="stylesheet" href="~/Content/user/css/bootstrap/css/bootstrap.min.css">
+    <link href="~/Content/user/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/user/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="~/Content/user/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/user/css/themecss/lib.css" rel="stylesheet">
+    <link href="~/Content/user/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+    <!-- Theme CSS
+    ============================================ -->
+    <link href="~/Content/user/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="~/Content/user/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="~/Content/user/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="~/Content/user/css/header6.css" rel="stylesheet">
+    <link href="~/Content/user/css/footer3.css" rel="stylesheet">
+    <link id="color_scheme" href="~/Content/user/css/home6.css" rel="stylesheet">
+
+    <link href="~/Content/user/css/responsive.css" rel="stylesheet">
+
+
+</head>
+
+<body class="common-home res layout-home6">
+    <script type="text/javascript" src="~/Content/user/js/jquery-2.2.4.min.js"></script>
+
+    <div id="wrapper" class="wrapper-full banners-effect-7">
+
+
+        <!-- Header Container  -->
+        <header id="header" class="variantleft type_6">
+
+            <!-- Header Top -->
+            <div class="header-top compact-hidden">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="header-top-right collapsed-block text-right  col-sm-12 col-xs-12 compact-hidden">
+                            <h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
+                            <div class="tabBlock" id="TabBlock-1">
+                                <ul class="top-link list-inline">
+                                    @*<li class="account" id="my_account">
+                                            <a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span>My Account</span> <span class="fa fa-angle-down"></span></a>
+                                            <ul class="dropdown-menu " style="display: none;">
+                                                <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
+                                                <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                            </ul>
+                                        </li>*@
+                                    @if (loginuser != null)
+                                    {
+                                        <li class="account" id="my_account"><a href="/UserAccount/Update/" title="My Account" class="btn btn-xs dropdown-toggle"> <i class="fa fa-user"></i> Hesabım </a></li>
+
+                                        <li class="wishlist"><a href="/UserWhistlist/Index/" class="top-link-wishlist" title="wishlist"><i class="fa fa-heart"></i> Favorilerim</a></li>
+                                        <li class="checkout"><a href="/UserCompare/Index/" class="top-link-checkout" title="Checkout"><i class="fa fa-check-square-o"></i> Karşılaştır</a></li>
+                                    }
+
+                                    @if (loginuser != null)
+                                    {
+                                        <li class="signin"><a href="/UserLogin/SignOut/" class="top-link-checkout" title="login"><i class="fa fa-lock"></i> Çıkış Yap</a></li>
+
+                                    }
+                                    else
+                                    {
+
+                                        <li class="signin"><a href="/UserLogin/Login/" class="top-link-checkout" title="login"><i class="fa fa-lock"></i> Giriş Yap</a></li>
+
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //Header Top -->
+            <!-- Header center -->
+            <div class="header-center">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo -->
+                        <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
+                            <a href="/UserHome/Index/"><img src="~/Content/user/image/demo/logos/logo.png" title="Your Store" alt="Your Store"></a>
+                        </div>
+                        <!-- //end Logo -->
+                        <!-- Search -->
+                        <div id="sosearchpro" class="col-md-5 col-sm-7 search-pro">
+
+                            @{ Html.RenderAction("Search", "UserPartial");}
+
+                        </div>
+                        <!-- //Search -->
+                        <!-- Main Menu -->
+                        <div class="phone-contact col-md-2  hidden-md hidden-sm hidden-xs">
+                            @{ Html.RenderAction("SupportContact", "UserPArtial");}
+                        </div>
+                        <!-- //Main Menu -->
+                        <!-- Shopping Cart -->
+                        @if (loginuser != null)
+                        {
+                            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 shopping_cart pull-right">
+                                <!--cart-->
+                                <div id="cart" class="btn-group btn-shopping-cart">
+
+                                    @{ Html.RenderAction("CartBanner", "UserPartial");}
+                                </div>
+                                <!--//cart-->
+                            </div>
+
+
+                        }
+
+
+
+
+                        <!-- //Shopping Cart -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- //Header center -->
+            <!-- Header Bottom -->
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="row">
+                        <!-- Sidebar menu -->
+                        <div class="sidebar-menu col-md-3 col-sm-6 col-xs-12  ">
+                            <div class="responsive so-megamenu ">
+                                <div class="so-vertical-menu no-gutter compact-hidden">
+                                    <nav class="navbar-default">
+                                        @{Html.RenderAction("PartialCategory", "UserPartial");}
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Main menu -->
+                        <div class="megamenu-hori col-md-9 col-sm-6 col-xs-12 ">
+                            <div class="responsive so-megamenu ">
+                                <nav class="navbar-default">
+                                    <div class=" container-megamenu  horizontal">
+                                        <div class="navbar-header">
+                                            <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                            Navigation
+                                        </div>
+
+                                        <div class="megamenu-wrapper">
+                                            <span id="remove-megamenu" class="fa fa-times"></span>
+                                            <div class="megamenu-pattern">
+                                                <div class="container">
+                                                    <ul class="megamenu " data-transition="slide" data-animationtime="250">
+                                                        <li class="">
+                                                            <p class="close-menu"></p>
+                                                            <a href="/UserHome/Index/" class="clearfix">
+                                                                <strong>Ana Sayfa</strong>
+                                                                <span class="label"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <p class="close-menu"></p>
+                                                            <a href="/UserProduct/Index/" class="clearfix">
+                                                                <strong>Ürünler</strong>
+                                                                <span class="label"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="with-sub-menu hover">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                <strong>Sayfalar</strong>
+
+                                                                <b class="caret"></b>
+                                                            </a>
+                                                            @if (loginuser != null)
+                                                            {
+                                                                <div class="sub-menu" style="width: 40%; ">
+                                                                    <div class="content">
+                                                                        <div class="row">
+
+
+
+                                                                            <div class="col-md-6">
+                                                                                <ul class="row-list">
+                                                                                    <li><a class="subcategory_item" href="/UserFaq/Index/">Yardım&Destek</a></li>
+
+                                                                                    <li><a class="subcategory_item" href="/UserAbout/Index/">Hakkımızda</a></li>
+                                                                                    <li><a class="subcategory_item" href="/UserContact/Index/">İletişim</a></li>
+
+                                                                                </ul>
+                                                                            </div>
+
+
+
+                                                                            <div class="col-md-6">
+                                                                                <ul class="row-list">
+                                                                                    <li><a class="subcategory_item" href="/OrderHistory/Index/">Sipariş Geçmişim</a></li>
+                                                                                    <li><a class="subcategory_item" href="/UserWhistlist/Index/">Favorilerim</a></li>
+                                                                                    <li><a class="subcategory_item" href="/UserCart/Index/">Sepetim</a></li>
+                                                                                    <li><a class="subcategory_item" href="/UserCompare/Index/">Karşılaştır</a></li>
+                                                                                </ul>
+                                                                            </div>
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="sub-menu ">
+                                                                    <div class="content">
+                                                                        <div class="row">
+
+
+
+                                                                            <div class="col-md-6">
+                                                                                <ul class="row-list">
+                                                                                    <li><a class="subcategory_item" href="/UserFaq/Index/">Yardım&Destek</a></li>
+
+                                                                                    <li><a class="subcategory_item" href="/UserAbout/Index/">Hakkımızda</a></li>
+                                                                                    <li><a class="subcategory_item" href="/UserContact/Index/">İletişim</a></li>
+
+                                                                                </ul>
+                                                                            </div>
+
+
+
+                                                                           
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </li>
+
+                                                        @{ Html.RenderAction("PartialTopCategory", "UserPartial");}
+
+
+
+                                                        <li class="">
+                                                            <p class="close-menu"></p>
+                                                            <a href="/UserContact/Index/" class="clearfix">
+                                                                <strong>İletişim</strong>
+                                                                <span class="label"></span>
+                                                            </a>
+                                                        </li>
+
+
+
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- //end Main menu -->
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navbar switcher -->
+            <!-- //end Navbar switcher -->
+        </header>
+        <!-- //Header Container  -->
+        <!-- Block slideshow  -->
+        <!-- //Block slideshow  -->
+        <!-- Main Container  -->
+        <div class="main-container ">
+            <div class="container">
+                <div class="row">
+                    <div id="content-top" class="clearfix">
+                        <ul class="breadcrumb">
+                            <li><a href="/UserHome/Index/"><i class="fa fa-home"></i></a></li>
+
+                            <li><a href="#">@ViewBag.banner</a></li>
+                        </ul>
+
+                        @RenderBody()
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- //Main Container -->
+        <!-- Block Spotlight1  -->
+        <!-- //Block Spotlight1  -->
+        <!-- Block Spotlight2  -->
+        <!-- //Block Spotlight2  -->
+
+        <script type="text/javascript">
+
+            var $typeheader = 'header-home1';
+
+        </script>
+
+        <!-- Footer Container -->
+        <footer class="footer-container type_footer3">
+            <!-- Footer Top Container -->
+            <section class="footer-top">
+                <div class="container content">
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-3 box-information">
+                            <div class="module clearfix">
+                                <h3 class="modtitle">Bilgi Al</h3>
+                                <div class="modcontent">
+                                    <ul class="menu">
+                                        <li><a href="/UserAbout/Index/">Hakkımızda</a></li>
+                                        <li><a href="/UserFaq/Index/">Yardım&Destek</a></li>
+                                        <li><a href="/UserContact/Index/">İletişim</a></li>
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-service">
+                           @{ Html.RenderAction("FooterCategory", "UserPartial");}
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 box-account">
+                            @{ Html.RenderAction("FooterBrand", "UserPartial");}
+                        </div>
+                        <div class="col-sm-6 col-md-3 collapsed-block ">
+                            @{ Html.RenderAction("FooterContact", "UserPartial");}
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+            <!-- /Footer Top Container -->
+            <!-- Footer Bottom Container -->
+
+            <div class="footer-bottom-block ">
+                <div class=" container">
+                    <div class="row">
+                        <hr class="footer-lines">
+                        <div class="col-sm-12 copyright-text"> © @DateTime.Now.ToString("yyyy") Tüm Hakları Saklıdır. </div>
+                        <hr class="footer-lines footer-lines--bottom">
+                        <!--Back To Top-->
+                        <div class="back-to-top col-sm-12 "><i class="fa fa-angle-up"></i><span> Kaydır </span></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- /Footer Bottom Container -->
+
+
+        </footer>
+        <!-- //end Footer Container -->
+
+    </div>
+
+
+    <!-- Social widgets -->
+    <!-- End Social widgets -->
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script type="text/javascript" src="~/Content/user/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/themejs/libs.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/unveil/jquery.unveil.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/countdown/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/datetimepicker/moment.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/modernizr/modernizr-2.6.2.min.js"></script>
+
+
+    <!-- Theme files
+    ============================================ -->
+    <script type="text/javascript" src="~/Content/user/js/themejs/application.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/themejs/homepage.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/themejs/so_megamenu.js"></script>
+    <script type="text/javascript" src="~/Content/user/js/themejs/addtocart.js"></script>
+
+</body>
+
+<!-- Mirrored from demo.smartaddons.com/templates/html/market/home6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 May 2022 21:36:46 GMT -->
+</html>

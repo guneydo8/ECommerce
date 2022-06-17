@@ -1,0 +1,120 @@
+﻿@model EntityLayer.Entity.EndUser
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-container container">
+   
+    @if (ViewBag.errormessage != null)
+    {
+        <div id="show-alert" class="alert alert-danger" role="alert">
+            @ViewBag.errormessage
+        </div>
+    }
+    @if (ViewBag.message != null)
+    {
+        <div id="show-alert" class="alert alert-success" role="alert">
+            @ViewBag.message
+        </div>
+    }
+    <div class="row">
+        <!--Middle Part Start-->
+        <div class="col-sm-9" id="content">
+            <h2 class="title">Hesabım</h2>
+            <p class="lead">Merhaba, <strong>@ViewBag.usr!</strong> - Hesap bilgilerinizi bu form üzerinden güncelleyebilirsiniz.<hr /> <span class="text-info"> *Güncelleme sonrasında giriş ekranına yönlendirileceksiniz.</span><hr /></p>
+            <form method="post" action="/UserAccount/Update/">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <fieldset id="personal-details">
+                            <legend>Kullanıcı Bilgileri</legend>
+                            @Html.HiddenFor(x => x.Id)
+                            <div class="form-group required">
+                                <label for="input-firstname" class="control-label">Ad</label>
+
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group required">
+                                <label for="input-lastname" class="control-label">Soyad</label>
+                                @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group required">
+                                <label for="input-telephone" class="control-label">Telefon</label>
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="input-fax" class="control-label">Doğum Tarihi</label>
+                                
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" id="input-date-ordered" data-date-format="YYYY-MM-DD"  value="@ViewBag.date" placeholder="Doğum Tarihiniz..."name="BornDate"><span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <fieldset>
+                            <legend>Şifre Değiştirme</legend>
+                            <div class="form-group required">
+                                <label for="input-password" class="control-label">Mevcut Şifre</label>
+                                <input type="password" class="form-control" id="input-password" placeholder="Mevcut Şifreniz..." value="" name="Password">
+                            </div>
+                            <div class="form-group required">
+                                <label for="cinput-password" class="control-label">Yeni Şifre</label>
+                                <input type="password" class="form-control" id="cinput-password" placeholder="Yeni Şifreniz..." value="" name="newPassword">
+                            </div>
+                            <div class="form-group required">
+                                <label for="input-confirm" class="control-label">Yeni Şifre Doğrulama</label>
+                                <input type="password" class="form-control" id="input-confirm" placeholder="Yeni Şifrenizi Doğrulayınız..." value="" name="validationPassword">
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <fieldset id="address">
+                            <legend>Adres Bilgileri</legend>
+                            <div class="form-group">
+                                <label for="input-company" class="control-label">Ülke</label>
+
+                                @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+
+                            </div>
+                            <div class="form-group required">
+                                <label for="input-address-1" class="control-label">Şehir</label>
+                                @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group required">
+                                <label for="input-city" class="control-label">Adres</label>
+                                @Html.TextAreaFor(x => x.Adress, new { @class = "form-control" })
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                </div>
+
+
+
+                <div class="buttons clearfix">
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-md btn-primary" onclick="return confirm('Kullanıcı bilgileriniz güncellenecek  Emin misiniz?')" value="Değişiklikleri Kaydet">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--Middle Part End-->
+        <!--Right Part Start -->
+        <!--Right Part End -->
+    </div>
+</div>
+<script>
+        var alert = document.querySelector("#show-alert");
+        setTimeout(() => {
+            alert.remove();
+        }, 2000);
+</script>

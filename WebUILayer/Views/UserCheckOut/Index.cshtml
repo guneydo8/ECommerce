@@ -1,0 +1,228 @@
+﻿@model WebUILayer.Models.CheckViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+
+<div class="main-container container">
+
+    <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Siparişi Onayla</h2>
+            <div class="so-onepagecheckout ">
+                <div class="col-left col-sm-3">
+                   
+                    <div class="panel panel-default">
+                       
+                        @{ var user = Model.EndUsers.FirstOrDefault();}
+                        <div class="panel-body">
+                            <fieldset id="account">
+                                <div class="form-group required">
+                                    <label for="input-payment-firstname" class="control-label">Ad</label>
+                                    <input type="text" class="form-control" id="input-payment-firstname" readonly="" value="@user.Name" name="firstname">
+                                </div>
+                                <div class="form-group required">
+                                    <label for="input-payment-lastname" class="control-label">Soyad</label>
+                                    <input type="text" class="form-control" id="input-payment-lastname" readonly="" value="@user.Surname" name="lastname">
+                                </div>
+                                <div class="form-group required">
+                                    <label for="input-payment-email" class="control-label">Mail</label>
+                                    <input type="text" class="form-control" id="input-payment-email"readonly="" value="@user.Email" name="email">
+                                </div>
+                                <div class="form-group required">
+                                    <label for="input-payment-telephone" class="control-label">Telefon</label>
+                                    <input type="text" class="form-control" id="input-payment-telephone" readonly="" value="@user.Phone" name="telephone">
+                                </div>
+                            
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-book"></i> Adres Bilgileriniz</h4>
+                        </div>
+                        <div class="panel-body">
+                            <fieldset id="address" class="required">
+                                <div class="form-group">
+                                    <label for="input-payment-company" class="control-label">Ülke</label>
+                                    <input type="text" class="form-control" id="input-payment-company" readonly="" value="@user.Country" name="company">
+                                </div>
+                                <div class="form-group required">
+                                    <label for="input-payment-address-1" class="control-label">Şehir</label>
+                                    <input type="text" class="form-control" id="input-payment-address-1" readonly="" value="@user.City" name="address_1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-payment-address-2" class="control-label">Addres</label>
+                                    <input type="text" class="form-control" id="input-payment-address-2" readonly="" value="@user.Adress" name="address_2">
+                                </div>
+                            
+                      
+                                <div class="checkbox">
+
+                                        <div class="pull-right">
+                                            
+                                            <a href="/UserAccount/Update/@user.Id"class="btn btn-primary" > Bilgilerimi Güüncelle</a>
+                                        </div>
+                                   
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-right col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default no-padding">
+                                <div class="col-sm-6 checkout-shipping-methods">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><i class="fa fa-truck"></i> Teslimat Yöntemi</h4>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <p>Mağazamızdan yapılan tüm alışverişlerde teslimat ücretsizdir.</p>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked="checked" name="Free Shipping">
+                                               Kargo Ücreti - ₺0.00
+                                            </label>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  checkout-payment-methods">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><i class="fa fa-credit-card"></i> Ödeme Yöntemi</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>Mağazamız şu anda sadece kapıda nakit ödeme yöntemi ile ödeme alabilmektedir.</p>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked="checked" name="Cash On Delivery">Kapıda nakit ödeme
+                                            </label>
+                                        </div>
+
+                                   
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        
+
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Onaylanan Siparişler</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-center">Ürün Görsel</td>
+                                                    <td class="text-left">Ürün Adı</td>
+                                                    <td class="text-left">Ürün Kodu</td>
+                                                    <td class="text-left">Marka</td>
+                                                    <td class="text-left">Adet</td>
+                                                    <td class="text-right">Birim Fiyat</td>
+                                                    <td class="text-right">Toplam Fiyat</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Products)
+                                                {
+
+                                                    var image = item.ProductImages.FirstOrDefault();
+
+
+                                                    <tr>
+                                                        <td class="text-center"><a href="product.html"><img width="70" src="@image.ImageUrl" alt="@item.Product.Title" /></a></td>
+                                                        <td class="text-left">@item.Product.Title</td>
+                                                        <td class="text-left">@item.Product.ProductCode</td>
+                                                        <td class="text-left">@item.Product.ProductBrand.Title</td>
+                                                        <td class="text-left">@item.Cart.Quantity</td>
+                                                        @*<td class="text-left" width="200px">
+                        <div class="input-group btn-block quantity">
+                            <input id="qty-cart-@item.Product.Id" type="number" name="quantity" value="1" max="@item.Product.Stock" min="1" size="1" class="form-control">
+
+
+
+                            <span class="input-group-btn">
+                                <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Update"><i class="fa fa-clone"></i></button>
+                                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+                            </span>
+                        </div>
+                    </td>*@
+                                                        <td id="sub-cart-@item.Product.Id" class="text-right">@item.Product.Price</td>
+                                                        <td id="total-cart-@item.Product.Id" class="text-right">₺ @item.Product.Price </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                            
+
+                                                <tr>
+                                                    <td class="text-right">
+                                                        <strong>Kargo Ücreti:</strong>
+                                                    </td>
+                                                    <td class="text-right">₺ 0.00</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="text-right">
+                                                        <strong>KDV (20%):</strong>
+                                                    </td>
+                                                    <td class="text-right">₺ @(Model.Products.Sum(x=>x.Product.Price)/5)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right">
+                                                        <strong>Sepet Toplamı:</strong>
+                                                    </td>
+
+                                                    <td class="text-right">₺ @Model.Products.Sum(x => x.Product.Price)</td>
+                                                </tr>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><i class="fa fa-pencil"></i> Siparişiniz için bir not bırakn.</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
+                                    <br>
+                                    <label class="control-label" for="confirm_agree">
+                                        <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
+                                        <span>I have read and agree to the <a class="agree" href="#"><b>Terms &amp; Conditions</b></a></span>
+                                    </label>
+                                    <div class="buttons">
+                                        <div class="pull-right">
+                                            <input type="button" class="btn btn-primary" id="button-confirm" value="Confirm Order">
+                                            <a href="/UserCheckOut/UserSale/"class="btn btn-primary" id="button-confirm"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Middle Part End -->
+
+    </div>
+</div>

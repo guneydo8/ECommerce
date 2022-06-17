@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<div class="main-container container">
+    
+    @if (ViewBag.message != null)
+    {
+        <div id="show-alert" class="alert alert-success" role="alert">
+            @ViewBag.message
+        </div>
+    }
+    @if (ViewBag.errormessage != null)
+    {
+        <div id="show-alert" class="alert alert-danger" role="alert">
+            @ViewBag.errormessage
+        </div>
+    }
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Kayıt Ekranı</h2>
+            <p>Zaten bir hesabınız var mı? <a href="/UserLogin/Login/">Giriş Sayfası</a>.</p>
+            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal account-register clearfix">
+                <fieldset id="account">
+                    <legend>Kullanıcı Bilgileri</legend>
+                    <div class="form-group required" style="display: none;">
+                        <label class="col-sm-2 control-label">Customer Group</label>
+                        <div class="col-sm-10">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="customer_group_id" value="1" checked="checked"> Default
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-firstname">Ad</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Name" value="" required="" placeholder="Adınız..." id="input-firstname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-lastname">Soyad</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Surname" value="" required="" placeholder="Soyadınız..." id="input-lastname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-email">Mail</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="Email" required="" value="" placeholder="Mail Adresiniz..." id="input-email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-telephone">Telefon</label>
+                        <div class="col-sm-10">
+                            <input type="tel" name="Phone" value="" required="" placeholder="Telefon Numaranız..." id="input-telephone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-fax">Doğum Tarihi</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="BornDate" value="" required="" placeholder="Doğum Tarihiniz..." id="input-fax" class="form-control">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="address">
+                    <legend>Adres Bilgileriniz</legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-company">Ülke</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Country" value="" required="" placeholder="Ülke" id="input-company" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-address-1">Şehir</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="City" value="" required="" placeholder="Şehir" id="input-address-1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-address-2">Adres</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="Adress" value="" required="" placeholder="Adres" id="input-address-2" class="form-control">
+                        </div>
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Şifre Doğrulama</legend>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-password">Şifre</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="Password" value="" required="" placeholder="Şifre" id="input-password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-confirm">Şifre Doğrulama</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="confirmPassword" value="" required="" placeholder="Şifre Doğrulama" id="input-confirm" class="form-control">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                </fieldset>
+                <div class="buttons">
+                    <div class="pull-right">
+
+                        <input type="submit" value="Kayıt Ol" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+        var alert = document.querySelector("#show-alert");
+        setTimeout(() => {
+            alert.remove();
+        }, 2000);
+</script>

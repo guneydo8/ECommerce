@@ -1,0 +1,391 @@
+﻿@{ var loginUser = Session["adminlogin"] as EntityLayer.Entity.Admin;
+    if (loginUser == null)
+    {
+        Response.Redirect("/AdminLogin/Login/");
+    }
+    }
+@{
+    Layout = null;
+}
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from templates.iqonic.design/prox/html/backend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Feb 2022 20:14:35 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Market | Yönetim Bilgi Sistemi</title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/user/ico/favicon.png" />
+
+    <link rel="stylesheet" href="~/Content/html/assets/css/backend.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/%40fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/%40icon/dripicons/dripicons.css">
+
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/core/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/daygrid/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/timegrid/main.css' />
+    <link rel='stylesheet' href='~/Content/html/assets/vendor/fullcalendar/list/main.css' />
+    <link rel="stylesheet" href="~/Content/html/assets/vendor/mapbox/mapbox-gl.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body class="  ">
+    loader Start
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+
+    </div>
+
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="/Home/Index/" class="header-logo">
+                    <img src="~/Content/user/image/demo/logos/logo_8.png" class="img-fluid rounded-normal" alt="logo">
+
+                  
+
+                </a>
+                <div class="iq-menu-bt-sidebar">
+                    <i class="las la-bars wrapper-menu"></i>
+                </div>
+            </div>
+            <div class="data-scrollbar" data-scroll="1">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="active">
+                            <a href="/Home/Index/" class="">
+                                <i class="las la-home iq-arrow-left"></i><span>Ana Sayfa</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+
+
+                        <li class=" ">
+                            <a href="#widget" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <i class="las la-bullseye iq-arrow-left"></i><span>Ürünler</span>
+                                <i class="las la-plus iq-arrow-right arrow-active"></i>
+                                <i class="las la-minus iq-arrow-right arrow-hover"></i>
+                            </a>
+                            <ul id="widget" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class=" ">
+                                    <a href="/ProductCategory/Index/">
+                                        <i class="las la-window-minimize"></i><span>Kategoriler</span>
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="/ProductBrand/Index/">
+                                        <i class="las la-chart-bar"></i><span>Markalar</span>
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="/Product/Index/">
+                                        <i class="las la-chart-bar"></i><span>Ürün Listesi</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="/About/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Hakkımızda</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="/Faq/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>S.S.S</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="/Sales/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Satış Listesi</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="/EndUser/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Müşteri Listesi</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="/ChartProduct/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Sepetteki Ürünler</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="/WhistlistProduct/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Favorideki Ürünler</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="/Statistics/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>İstatistikler</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+
+                        <li class=" ">
+                            <a href="#widget" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <i class="las la-bullseye iq-arrow-left"></i><span>Raporlar</span>
+                                <i class="las la-plus iq-arrow-right arrow-active"></i>
+                                <i class="las la-minus iq-arrow-right arrow-hover"></i>
+                            </a>
+                            <ul id="widget" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class=" ">
+                                    <a href="/Reports/Product/">
+                                        <i class="las la-window-minimize"></i><span>Ürün Raporları</span>
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="/Reports/Sales/">
+                                        <i class="las la-chart-bar"></i><span>Satış Raporları</span>
+                                    </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="/Reports/EndUser/">
+                                        <i class="las la-chart-bar"></i><span>Müşteri Raporları</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        
+
+                        <li class="">
+                            <a href="/Announcement/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Duyurular</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="/ContactInformation/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>İletişim Bilgilerimiz</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="/UserHome/Index/" class="">
+                                <i class="las la-address-book iq-arrow-left"></i><span>Siteye Git</span>
+                            </a>
+                            <ul id="home" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+                <div class="p-3"></div>
+            </div>
+        </div>       <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        <a href="index.html" class="header-logo">
+                            <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
+                        </a>
+                    </div>
+                    <div class="iq-search-bar device-search">
+                        <h4 class="current-time text-primary mr-md-4 mr-3">14:34:16</h4>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="change-mode">
+                            <div class="custom-control custom-switch custom-switch-icon custom-control-inline">
+                                <div class="custom-switch-inner">
+                                    <p class="mb-0"> </p>
+                                    <input type="checkbox" class="custom-control-input" id="dark-mode" data-active="true">
+                                    <label class="custom-control-label" for="dark-mode" data-mode="toggle">
+                                        <span class="switch-icon-left"><i class="a-left"></i></span>
+                                        <span class="switch-icon-right"><i class="a-right"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                                <li class="nav-item nav-icon search-content">
+                                    <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-search-line"></i>
+                                    </a>
+                                    <div class="iq-search-bar iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownSearch">
+                                        <form action="#" class="searchbox p-2">
+                                            <div class="form-group mb-0 position-relative">
+                                                <input type="text" class="text search-input font-size-12" placeholder="type here to search...">
+                                                <a href="#" class="search-link"><i class="las la-search"></i></a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+
+
+
+
+                                <li class="nav-item iq-full-screen"><a href="#" class="" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a></li>
+                                <li class="caption-content">
+                                    <a href="#" class="iq-user-toggle">
+                                        <img src="~/Content/image/user.png" class="img-fluid rounded" alt="user">
+                                    </a>
+
+                                    <div class="iq-user-dropdown">
+                                        <div class="card">
+                                            <div class="card-header d-flex justify-content-between align-items-center mb-0">
+                                                <div class="header-title">
+                                                    <h4 class="card-title mb-0">Profilim</h4>
+                                                </div>
+                                                <div class="close-data text-right badge badge-primary cursor-pointer"><i class="ri-close-fill"></i></div>
+                                            </div>
+                                            <div class="data-scrollbar" data-scroll="2">
+                                                <div class="card-body">
+                                                    <div class="profile-header">
+                                                        <div class="cover-container text-center">
+                                                            <img src="~/Content/image/user.png" alt="profile-bg" class="rounded img-fluid avatar-80">
+
+                                                            <div class="profile-detail mt-3">
+                                                                <h3>@loginUser.Name @loginUser.Surname</h3>
+                                                                <p class="mb-1">@loginUser.Email</p>
+                                                            </div>
+                                                            <a href="/AdminLogin/LogOut/" class="btn btn-primary">Çıkış Yap</a>
+                                                        </div>
+                                                        <div class="profile-details my-4">
+
+                                                            <a href="/Admin/Update/@loginUser.Id" class="iq-sub-card bg-danger-light rounded-small p-2">
+                                                                <div class="media align-items-center">
+                                                                    <div class="rounded iq-card-icon-small">
+                                                                        <i class="ri-profile-line"></i>
+                                                                    </div>
+                                                                    <div class="media-body ml-3">
+                                                                        <h6 class="mb-0 ">Bilgilerimi Güncelle</h6>
+
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+
+
+                                                        </div>
+                                                        <div class="personal-details">
+                                                            <h5 class="card-title mb-3 mt-3">Bilgilerim</h5>
+                                                            <div class="row align-items-center mb-2">
+                                                                <div class="col-sm-6">
+                                                                    <h6>Ad</h6>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <p class="mb-0">@loginUser.Name</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row align-items-center mb-2">
+                                                                <div class="col-sm-6">
+                                                                    <h6>Soyad</h6>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <p class="mb-0">@loginUser.Surname</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row align-items-center mb-2">
+                                                                <div class="col-sm-6">
+                                                                    <h6>Mail</h6>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <p class="mb-0">@loginUser.Email</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- Wrapper End-->
+    <!-- Backend Bundle JavaScript -->
+
+
+    <script src="~/Content/html/assets/js/backend-bundle.min.js"></script>
+
+    <!-- Flextree Javascript-->
+    <script src="~/Content/html/assets/js/flex-tree.min.js"></script>
+    <script src="~/Content/html/assets/js/tree.js"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="~/Content/html/assets/js/table-treeview.js"></script>
+
+    <!-- Masonary Gallery Javascript -->
+    <script src="~/Content/html/assets/js/masonry.pkgd.min.js"></script>
+    <script src="~/Content/html/assets/js/imagesloaded.pkgd.min.js"></script>
+
+    <!-- Mapbox Javascript -->
+    <script src="~/Content/html/assets/js/mapbox-gl.js"></script>
+    <script src="~/Content/html/assets/js/mapbox.js"></script>
+
+    <!-- Fullcalender Javascript -->
+    <script src='~/Content/html/assets/vendor/fullcalendar/core/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/daygrid/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/timegrid/main.js'></script>
+    <script src='~/Content/html/assets/vendor/fullcalendar/list/main.js'></script>
+
+    <!-- SweetAlert JavaScript -->
+    <script src="~/Content/html/assets/js/sweetalert.js"></script>
+
+    <!-- Vectoe Map JavaScript -->
+    <script src="~/Content/html/assets/js/vector-map-custom.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/Content/html/assets/js/customizer.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/Content/html/assets/js/chart-custom.js"></script>
+
+    <!-- slider JavaScript -->
+    <script src="~/Content/html/assets/js/slider.js"></script>
+
+    <!-- app JavaScript -->
+    <script src="~/Content/html/assets/js/app.js"></script>
+</body>
+
+<!-- Mirrored from templates.iqonic.design/prox/html/backend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Feb 2022 20:15:34 GMT -->
+</html>

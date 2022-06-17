@@ -1,0 +1,142 @@
+﻿@model WebUILayer.Models.ChartViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="main-container container">
+
+
+    <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Alışveriş Sepetim</h2>
+            <div class="table-responsive form-group">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center">Ürün Görsel</td>
+                            <td class="text-left">Ürün Adı</td>
+                            <td class="text-left">Ürün Kodu</td>
+                            <td class="text-left">Marka</td>
+                            <td class="text-left">Adet</td>
+                            <td class="text-right">Birim Fiyat</td>
+                            <td class="text-right">Toplam Fiyat</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartListItems)
+                        {
+
+                            var image = item.ProductImages.FirstOrDefault();
+
+
+                            <tr>
+                                <td class="text-center"><a href="product.html"><img width="70" src="@image.ImageUrl" alt="@item.Product.Title" /></a></td>
+                                <td class="text-left">@item.Product.Title</td>
+                                <td class="text-left">@item.Product.ProductCode</td>
+                                <td class="text-left">@item.Product.ProductBrand.Title</td>
+                                <td class="text-left" width="200px">
+                                    <div class="input-group btn-block quantity">
+
+
+                                        <input id="qty-@item.Product.Id" type="number" name="Quantity" value="@item.Cart.Quantity" max="@item.Product.Stock" onchange="sum('@item.Product.Id');" min="1" size="1" class="form-control">
+
+
+
+                                        <span class="input-group-btn">
+                                            <a href="/UserCart/Index/@item.Cart.Id" type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Update"><i class="fa fa-clone"></i></a>
+                                            <a href="/UserCart/RemoveCart/@item.Cart.Id" type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+                                        </span>
+
+                                    </div>
+                                </td>
+                                <td id="sub-@item.Product.Id" class="text-right">@item.Product.Price</td>
+                                <td id="total-@item.Product.Id" class="text-right">₺ @item.Product.Price </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+           
+            
+
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-8">
+                    <table class="table table-bordered">
+                        <tbody>
+
+                            <tr>
+                                <td class="text-right">
+                                    <strong>Kargo Ücreti:</strong>
+                                </td>
+                                <td class="text-right">₺ 0.00</td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                    <strong>KDV (20%):</strong>
+                                </td>
+                                <td class="text-right">₺ @(Model.CartListItems.Sum(x=>x.Product.Price)/5)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <strong>Sepet Toplamı:</strong>
+                                </td>
+
+                                <td class="text-right">₺ @Model.CartListItems.Sum(x => x.Product.Price)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <div class="pull-left"><a href="/UserProduct/Index/" class="btn btn-primary">Alışverişe Devam Et</a></div>
+                <div class="pull-right"><a href="/UserCheckOut/Index/" class="btn btn-primary">Sepeti Onayla</a></div>
+            </div>
+        </div>
+        <!--Middle Part End -->
+
+    </div>
+</div>
+
+
+@*<script>
+        var qty = document.querySelector('qty-cart-' +@Model.CartListItem);
+            var sub = document.querySelector("#sub-cart-@item.Product.Id");
+            var total = document.querySelector("#total-cart-@item.Product.Id");
+
+
+
+            qty.addEventListener("click", function (e) {
+                total.textContent = sub.value * qty.value;
+
+            })
+    </script>*@
+
+
+
+<script>
+    function sum(itemProductId) {
+        var birim = document.getElementById('sub-' + itemProductId).value;
+        var adet = document.getElementById('qty-' + itemProductId).value;
+        var toplam = parseFloat(birim) * parseFloat(adet);
+            $.ajax({
+                url: "@Url.Action("UpdateCart", "UserCart")",
+                type: "post",
+                data: { 'item': itemCartId, 'quantity': adet },
+                success: function (data, textstatus, jqxhr) {
+                    location.reload(true);
+                },
+                error: function (jqxhr, textstatus, errorthrown) {
+                }
+            });
+
+        }
+</script>
+
+
+
+

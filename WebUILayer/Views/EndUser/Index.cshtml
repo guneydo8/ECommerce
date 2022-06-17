@@ -1,0 +1,67 @@
+﻿@using EntityLayer.Entity
+@model List<EndUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">@ViewBag.message</h4>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table id="datatable" class="table data-table table-striped table-bordered">
+                <thead>
+                    <tr>
+                       
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Ülke</th>
+                        <th>Şehir</th>
+                        <th>Adres</th>
+                        <th>Doğum Tarihi</th>
+                        <th>Mail</th>
+                        <th>Katılma Tarihi</th>
+                        <th>Güncellenme Tarihi</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr>
+
+                        
+                      
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Country</td>
+                        <td>@item.City</td>
+                        <td>@item.Adress</td>
+                        <td>@item.BornDate.ToString("D")</td>
+                        <td>@item.Email</td>
+
+                        <td>@item.CreatedTime.ToString("f")</td>
+                        <td>@item.UpdatedTime.ToString("f")</td>
+
+
+
+                        
+
+                    </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,65 @@
+﻿@model WebUILayer.Models.WhistlistViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-container container">
+   
+
+    <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Favorilerim</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td class="text-center">Görsel</td>
+                            <td class="text-left">Ürün Adı</td>
+                            <td class="text-left">Ürün Kodu</td>
+                            <td class="text-left">Marka</td>
+                            <td class="text-right">Fiyat</td>
+                            <td class="text-right">İşlemler</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.WhistlistItems)
+                        {
+                            var image = item.ProductImages.FirstOrDefault();
+
+                            <tr>
+
+
+                                <td class="text-center">
+                                    <a href="product.html">
+                                        <img width="70" src="@image.ImageUrl" alt="@image.Product.Title" title="@image.Product.Title">
+                                    </a>
+                                </td>
+                                <td class="text-left">
+                                    <a href="product.html">@item.Product.Title</a>
+                                </td>
+                                <td class="text-left">@item.Product.ProductCode</td>
+                                <td class="text-right">@item.Product.ProductBrand.Title</td>
+                                <td class="text-right">
+                                    <div class="price"> <span class="price-new">₺@item.Product.Price</span> </div>
+
+                                </td>
+                                <td class="text-right">
+                                    <a href="/UserCart/AddCart/@item.Product.Id" class="btn btn-primary" title="" data-toggle="tooltip" @*onclick="cart.add('48');"*@ type="button" data-original-title="Sepete Ekle">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                    <a class="btn btn-danger" title="" data-toggle="tooltip" href="/UserWhistlist/RemoveWhist/@item.Whistlist.Id" data-original-title="Kaldır"><i class="fa fa-times"></i></a>
+                                </td>
+                               
+                            </tr>
+                        }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Middle Part End-->
+        
+    </div>
+</div>

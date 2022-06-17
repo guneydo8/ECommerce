@@ -1,0 +1,133 @@
+﻿@model WebUILayer.Models.CompareViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-container container">
+  
+
+    <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Ürünleri Karşılaştır</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="12"><strong>Ürün Detayları</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+
+
+                        <tr>
+                            <td>Ürün</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+                                <td><a href="/UserProduct/SingleProduct/@item.Product.Id">@item.Product.Title"</a></td>
+                            }
+                   
+                        </tr>
+                        <tr>
+                            <td>Görsel</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                                    {
+                                        var image = item.ProductImages.FirstOrDefault();
+
+                            <td class="text-center"><img class="img-thumbnail" title="@item.Product.Title" alt="@item.Product.Title" width="100" src="@image.ImageUrl"></td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Fiyat</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+
+                            <td><div class="price"><span class="price-new">₺@item.Product.Price</span>  </div></td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Ürün Kodu</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+
+                            <td>#@item.Product.ProductCode</td>
+                            }
+                          
+                        </tr>
+                        <tr>
+                            <td>Marka</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+                            <td>@item.Product.ProductBrand.Title</td>
+                            }
+                           
+                        </tr>
+                        <tr>
+                            <td>Durum</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+
+                            <td>In Stock</td>
+                            }
+                           
+                        </tr>
+                        <tr>
+                            <td>Değerlendirme</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+                                
+                                <td class="rating">
+                                    <div class="rating-box">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                    </div>
+                                    Based on 1 reviews.
+                                </td>
+                            }
+
+
+
+                        </tr>
+                        <tr>
+                            <td>Özellikler</td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+
+                            <td class="description">@item.Product.Description..</td>
+                            }
+                         
+                        </tr>
+                        <tr>
+                            <td></td>
+                            @foreach (var item in Model.CompareListItemModels)
+                            {
+
+
+                            <td>
+                                
+                                <a class="btn btn-primary btn-block" href="/UserCart/AddCart/@item.Product.Id">Sepete Ekle</a>
+                                <a class="btn btn-danger btn-block" href="/UserCompare/RemoveCompare/@item.Compare.Id">Listeden Kaldır</a>
+                            </td>
+                            }
+                        </tr>
+                       
+                    </tbody>
+                
+                     
+                </table>
+            </div>
+        </div>
+        <!--Middle Part End -->
+
+    </div>
+</div>
